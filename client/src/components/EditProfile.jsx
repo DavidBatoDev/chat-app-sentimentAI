@@ -7,7 +7,7 @@ import XIcon from "@mui/icons-material/X";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import LinkIcon from "@mui/icons-material/Link";
-import { app } from "../firebase";
+import { app } from "../firebase.js";
 import { useDispatch } from "react-redux";
 import {
   getDownloadURL,
