@@ -57,7 +57,7 @@ const MessageSelf = ({ message }) => {
       backgroundColor = emotionColors[highestEmotion.label] || backgroundColor;
     }
     sentimentsList = sentiments.map((sent, index) => (
-      <div key={index} className="text-xs">
+      <div key={index} className="text-xs text-black">
         <span className="mr-2">
           {sent.label}: {sent.score.toFixed(2)}
         </span>
@@ -74,7 +74,7 @@ const MessageSelf = ({ message }) => {
           className={`${darkMode ? 'dark-secondary' : 'bg-slate-300'} 
                       flex flex-col p-3 rounded-xl min-w-56 max-w-40 md:max-w-72 lg:max-w-96 relative`}
         >
-          <p className="text-sm md:text-md break-all">{message.content}</p>
+          <p className="text-sm md:text-md break-all text-black">{message.content}</p>
           <span className="flex justify-end text-xs text-gray-400">
             {modifiedTime()}
           </span>
