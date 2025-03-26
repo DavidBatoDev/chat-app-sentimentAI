@@ -47,7 +47,7 @@ const Login = () => {
     e.preventDefault();
     try {
       dispatch(loginStart());
-      const res = await axios.post("/api/auth/login", formBody);
+      const res = await axios.post("https://chat-app-sentimentai.onrender.com/api/auth/login", formBody);
       const data = res.data;
       if (!data.success) {
         dispatch(loginFailure(data));
