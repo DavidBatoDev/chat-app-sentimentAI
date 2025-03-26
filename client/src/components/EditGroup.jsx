@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { app } from "../firebase";
+import { app } from "../firebase.js";
 import { useDispatch } from "react-redux";
 import {
   getDownloadURL,
