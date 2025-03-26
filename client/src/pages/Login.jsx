@@ -34,7 +34,6 @@ const Login = () => {
         navigate("/nav");
       }
     }
-    navigate("/login");
   }, [user, navigate]);
 
   const handleChange = (e) => {
@@ -48,10 +47,7 @@ const Login = () => {
     e.preventDefault();
     try {
       dispatch(loginStart());
-      const res = await axios.post(
-        "https://chat-app-sentimentai.onrender.com/api/auth/login",
-        formBody
-      );
+      const res = await axios.post("/api/auth/login", formBody);
       const data = res.data;
       if (!data.success) {
         dispatch(loginFailure(data));
@@ -62,11 +58,12 @@ const Login = () => {
       // Navigate based on the window width
       if (window.innerWidth > 500) {
         navigate("/app/chat");
+        console.log("Navigating to /app/chat");
       } else {
         navigate("/nav");
       }
     } catch (error) {
-      console.log(error.response.data);
+      console.log(error.response);
       dispatch(loginFailure(error.response.data.message));
     }
   };
