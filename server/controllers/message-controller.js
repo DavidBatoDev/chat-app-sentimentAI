@@ -2,30 +2,37 @@ import Chat from "../models/chat-model.js"
 import User from "../models/user-model.js"
 import Message from "../models/message-model.js"
 import { errorHandler } from "../utils/errorHandler.js"
+import { classifyEmotion } from "../utils/sentimentHelper.js"
 
 export const sendMessage = async (req, res, next) => {
-    const currentUserId = req.user._id
-    const {content, chatId} = req.body
+    const currentUserId = req.user._id;
+    const { content, chatId } = req.body;
     try {
         if (!currentUserId) {
-            next(errorHandler(400, "Not authorized"))
-            return
+            next(errorHandler(400, "Not authorized"));
+            return;
         }
         if (!content || !chatId) {
-            return next(errorHandler(400, "Data is not sufficient"))
+            return next(errorHandler(400, "Data is not sufficient"));
         }
-        const chat = await Chat.findById(chatId)
+        const chat = await Chat.findById(chatId);
         if (!chat) {
-            return next(errorHandler(404, "Chat not found"))
+            return next(errorHandler(404, "Chat not found"));
         }
-        const recipients = chat.users.filter(id => currentUserId.toString() != id.toString())
+        const recipients = chat.users.filter(id => currentUserId.toString() !== id.toString());
+        
+        // Integrate emotion classification
+        const sentimentResult = await classifyEmotion(content);
+        
         const newMessage = new Message({
             chat: chatId,
             sender: currentUserId,
             reciever: recipients,
-            content: content
-        })
-        let message = await newMessage.save()
+            content: content,
+            sentiment: sentimentResult  // storing the sentiment analysis result
+        });
+        
+        let message = await newMessage.save();
         message = await Message.findById(message._id)
             .populate("sender", "name")
             .populate({
@@ -38,12 +45,13 @@ export const sendMessage = async (req, res, next) => {
         message = await User.populate(message, {
             path: 'reciever',
             select: 'name email profilePic'
-        })
-
-        await Chat.findByIdAndUpdate(chatId, {latestMessage: message})
-        res.status(200).json(message)
+        });
+        
+        await Chat.findByIdAndUpdate(chatId, { latestMessage: message });
+        res.status(200).json(message);
     } catch (error) {
-        next(error)
+        console
+        next(error);
     }
 }
 
