@@ -82,7 +82,7 @@ const App = () => {
 
   // socket connection (initialization)
   useEffect(() => {
-    dispatch(initializeSocket("http://localhost:5000"));
+    dispatch(initializeSocket("https://chat-app-sentimentai.onrender.com"));
     return () => {
       dispatch(disconnectSocket());
     };
