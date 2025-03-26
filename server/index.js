@@ -46,7 +46,7 @@ app.use((error, req, res, next) => {
 })
 
 // listen
-const server = app.listen(PORT, () => {
+const server = httpServer.listen(PORT, () => {
     console.log('Server is running on port ', PORT);
 })
 
@@ -62,6 +62,13 @@ app.set('socketio', io);
 
 // socket.io events
 io.on('connection', (socket) => {
+    // Prevent Render from killing idle connections
+    const interval = setInterval(() => {
+        socket.emit('ping'); // Send ping to client
+    }, 25000); // Every 25 seconds (Render may close connections after ~30s)
+
+
+
     socket.on('setup', (user) => {
         if (user?.data?._id) {
             socket.userId = user.data._id;
@@ -186,10 +193,11 @@ io.on('connection', (socket) => {
 
     socket.on('disconnect', () => {
         const userId = socket.userId;
+        clearInterval(interval);
         socket.broadcast.emit('user offline', userId);
         
-        socket.rooms.forEach(room => {
+        for (const room of socket.rooms) {
             socket.leave(room);
-        });
+        }
     });
 })
