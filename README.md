@@ -1,6 +1,6 @@
 # Chat Application
 
-This project is a full-featured chat application built with the MERN stack (MongoDB, Express, React, Node.js). It supports personal and group chats, real-time messaging, user authentication, and more.
+This project is an AI-powered chat application built with the MERN stack (MongoDB, Express, React, Node.js). In addition to real-time messaging, user authentication, and group chats, it features sentiment analysis powered by a pretrained deep learning model from Hugging Face.
 
 ## Features
 
@@ -11,6 +11,12 @@ This project is a full-featured chat application built with the MERN stack (Mong
 - **Group Chat Info Page**: Group creators can edit group chat details.
 - **Real-time Chat**: Real-time messaging powered by Socket.io.
 - **Image Upload**: Users can upload images in chats using Firebase storage.
+- **Sentiment Analysis**:
+    - **Emotion Classification**: Each chat message is analyzed for emotion using a Hugging Face model (e.g., j-hartmann/emotion-english-distilroberta-base).
+    - **Visual Cues**: The chat message boxes are colored based on the highest detected emotion, and scores for all emotions are displayed.
+- **Profile Info Page**: Users can view and edit their profile information.
+- **Group Chat Info Page**: Group creators can edit group chat details.
+- **Dark/Light Mode**: Seamlessly switch between dark and light themes across multiple screens.
 
 ## Tech Stack
 
@@ -18,6 +24,7 @@ This project is a full-featured chat application built with the MERN stack (Mong
 - **Backend**: Node.js, Express, MongoDB
 - **Real-time Communication**: Socket.io
 - **Authentication**: JWT (JSON Web Token)
+- **Sentiment Analysis**: Hugging Face Inference API (integrated with custom logic)
 
 ## Installation
 
@@ -58,7 +65,7 @@ This project is a full-featured chat application built with the MERN stack (Mong
 
     ```env
     PORT=5000
-    MONGO_URI=your_mongodb_connection_string
+    MONGODB_URI=your_mongodb_connection_string
     JWT_SECRET=your_jwt_secret
     FIREBASE_API_KEY=your_firebase_api_key
     FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
@@ -66,6 +73,7 @@ This project is a full-featured chat application built with the MERN stack (Mong
     FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
     FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
     FIREBASE_APP_ID=your_firebase_app_id
+    HUGGINGFACE_API_KEY=your_huggingface_token
     ```
 
 4. **Run the application:**
@@ -127,13 +135,16 @@ This project is a full-featured chat application built with the MERN stack (Mong
 ```
 
 ## App:
-### Darkmode in multiple screens:
-![image](https://github.com/user-attachments/assets/54f1b741-814b-4ef3-bbfb-a3776a95a336)
-![image](https://github.com/user-attachments/assets/e5f5a56b-d15a-489d-92c1-6d1b5c239a4b)
+### Chat Area  Darkmode in multiple screens:
+![image](https://github.com/user-attachments/assets/3f6859ec-0cab-4e85-ae3b-e8ba4bbdc9b3)
+![image](https://github.com/user-attachments/assets/91110ace-7c81-4b73-8d6b-b443ea9f98fe)
 
-### Lightmode in multiple screens:
-![image](https://github.com/user-attachments/assets/2101e2ed-8f83-4c18-bbd9-c65ecbc3d352)
-![image](https://github.com/user-attachments/assets/aa1ff1f1-afe6-436a-870c-e57f8582ad14)
+
+### Chat Area Lightmode in multiple screens:
+![image](https://github.com/user-attachments/assets/7c63bc10-db0c-4882-a324-e5a1350cc4ae)
+![image](https://github.com/user-attachments/assets/fc324dbb-42b3-449d-98a7-f3da0bc7f949)
+
+
 
 ### Profile Page:
 ![image](https://github.com/user-attachments/assets/c33ae57d-5811-411b-a4b9-e8a29442438c)
@@ -148,8 +159,4 @@ This project is a full-featured chat application built with the MERN stack (Mong
 
 ### Navigation page (Mobile)
 ![image](https://github.com/user-attachments/assets/40e8729f-ded5-4fdf-8b0f-086c91e72ca4)
-
-### Chat Area (Mobile and Desktop):
-![image](https://github.com/user-attachments/assets/9d268309-579d-419d-8b2a-2f021c8c8b8d)
-![image](https://github.com/user-attachments/assets/3aa82e8e-7378-4a8f-9026-b0f26ce5d57b)
 
