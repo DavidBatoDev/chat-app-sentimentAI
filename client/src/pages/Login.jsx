@@ -34,6 +34,7 @@ const Login = () => {
         navigate('/nav');
       }
     }
+    navigate('/login');
   }, [user, navigate]);
 
   const handleChange = (e) => {
