@@ -3,7 +3,7 @@
 This project is an AI-powered chat application built with the MERN stack (MongoDB, Express, React, Node.js). In addition to real-time messaging, user authentication, and group chats, it features sentiment analysis powered by a pretrained deep learning model from Hugging Face.
 
 ## Demo:
-chat-app-sentiment-ai.vercel.app
+[chat-app-sentiment-ai.vercel.app](https://chat-app-sentiment-ai.vercel.app)
 
 > **Note**: Due to Render's free tier performance limitations, you might experience slower response times or occasional delays or even unwanted excecption, especially after periods of inactivity when the service wakes up. If you need more consistent performance, consider upgrading to a paid plan or exploring alternative hosting options if you decided to deploy this project.
 
