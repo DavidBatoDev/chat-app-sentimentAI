@@ -80,12 +80,12 @@ const MessageOthers = ({ message }) => {
           style={{ backgroundColor }}
           className={`${darkMode ? 'dark-secondary' : ''} flex flex-col bg-slate-300 p-2 rounded-xl min-w-56 max-w-40 md:max-w-72 lg:max-w-96`}
         >
-          <h1 className="font-semibold">{message.sender.name}</h1>
-          <p className="text-sm text-wrap break-words">{message.content}</p>
+          <h1 className="font-semibold text-black">{message.sender.name}</h1>
+          <p className="text-sm text-wrap text-black break-words">{message.content}</p>
           <span className="flex justify-end text-xs text-gray-400">{modifiedTime()}</span>
           {/* Render emotion scores */}
           {sentimentsList && (
-            <div className="mt-2 flex flex-col">
+            <div className="mt-2 flex flex-col text-black">
               {sentimentsList}
             </div>
           )}
