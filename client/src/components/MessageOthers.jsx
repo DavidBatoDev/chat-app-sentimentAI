@@ -15,7 +15,7 @@ const MessageOthers = ({ message }) => {
     fear: '#e2e3e5',      // light gray
     disgust: '#fff3cd',   // light yellow
     surprise: '#d6d8d9',  // light silver
-    neutral: '#fefefe'    // almost white
+    neutral: 'gray'    // almost white
   };
 
   // Calculate modified time
